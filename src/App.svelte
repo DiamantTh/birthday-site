@@ -28,7 +28,8 @@
     }
   };
 
-  const style = themes[theme] || themes.sunset;
+  const themeKey = Object.prototype.hasOwnProperty.call(themes, theme) ? theme : 'sunset';
+  const style = themes[themeKey];
 
   const wishes = [
     'Möge dieses Jahr voller Licht, Liebe und überraschender Momente sein.',
@@ -200,7 +201,7 @@
     margin-top: 0.35rem;
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3.2rem);
-    color: var(--accent);
+    color: #2a1f3d;
     font-style: italic;
   }
 
@@ -278,7 +279,13 @@
 
   .signature {
     font-weight: 700;
-    color: var(--accent);
+    color: #2a1f3d;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spark {
+      animation: none;
+    }
   }
 
   @keyframes pulse {
